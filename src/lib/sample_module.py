@@ -49,7 +49,6 @@ def myadd(x,y):
 def mysub(x,y):
     return x-y
 
-print("name from sample module,",__name__)
 if __name__ == "__main__":
     print("From module add",myadd(5,6))
     print("From module sub",mysub(5,3))

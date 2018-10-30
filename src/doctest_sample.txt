@@ -1,0 +1,6 @@
+::
+    >>> from class_9_testing import myadd,mysub
+    >>> myadd(2,3)
+    5
+    >>> mysub(5,4)
+    1

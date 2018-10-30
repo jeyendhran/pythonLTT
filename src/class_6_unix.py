@@ -52,10 +52,61 @@ class Myclass:
     def __init__(self):
         self.name = "Jeyendhran"
 
-import pickle
-f = open("student.bin","wb")
-me = Myclass()
-pickle.dump(me,f)
-f = open("student.bin","rb")
-s = pickle.load(f)
-print(s )
+# import pickle
+# f = open("student.bin","wb")
+# me = Myclass()
+# pickle.dump(me,f)
+# f = open("student.bin","rb")
+# s = pickle.load(f)
+# print(s)
+
+# import sys
+# a = 5
+# b = 0
+# fd = os.open("error.txt",os.O_CREAT|os.O_APPEND|os.O_WRONLY)
+# os.dup2(fd,2)
+# if b == 0:
+#     sys.stderr.write("b is zero")
+# os.close(fd)
+
+# import subprocess
+#
+# f = os.stat(".")
+# completed = subprocess.run(['ls', '-1'],stdout=subprocess.PIPE)
+#
+# files = completed.stdout.decode('utf-8').strip()
+# files = files.split("\n")
+# total_size = 0
+# for file in files:
+#     size = os.stat(file).st_size
+#     total_size += size
+# print("\nTotal size is",total_size,"bytes")
+
+import os
+import sys
+import time
+
+r, w = os.pipe()
+print("r,w",r,w)
+pid = os.fork()
+
+if pid:
+    #os.wait()
+    os.close(w)
+    r = os.fdopen(r)
+    print("r",r)
+    mstr = r.read()
+    print("Read from parent",mstr)
+    sys.exit(0)
+    print("PPID is",os.getppid())
+    print("Hello world from parent")
+else:
+    time.sleep(4)
+    print("Child")
+    os.close(r)
+    w = os.fdopen(w,"w")
+    print("w",w)
+    w.write("Written by child")
+    w.close()
+    sys.exit(0)
+    print("Hello world from child")

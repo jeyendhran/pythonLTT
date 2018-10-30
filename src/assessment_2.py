@@ -1,4 +1,5 @@
 def intersection(a,b):
+    '''To find intersection of 2 dicts'''
     res={}
     keysa = set(a.keys())
     keysb = set(b.keys())
@@ -12,6 +13,7 @@ def intersection(a,b):
     return res
 
 def union(a,b):
+    '''To find union of 2 dicts'''
     res = {}
     keysa = set(a)
     keysb = set(b)
@@ -20,7 +22,7 @@ def union(a,b):
     values = []
     for i in union:
         keys.append(i)
-        if i in a and i in b:
+        if i in a and i in b:   # the key is in 2 dict then make the values of 2 dicts as a list
             values.append(list([a[i], b[i]]))
         elif i in a:
             values.append(a[i])
@@ -30,6 +32,7 @@ def union(a,b):
     return res
 
 def subtract(a,b):
+    '''To find subtraction of 2 dicts'''
     res = {}
     keysa = set(a)
     keysb = set(b)
@@ -44,20 +47,22 @@ def subtract(a,b):
     return res
 
 def issubsetdict(a,b):
+    '''To find issubset of 2 dicts'''
     keysa = set(a)
     keysb = set(b)
     res = keysa.issubset(keysb)
     return res
 
 def symmetricdiff(a,b):
-    keysa = set()
+    '''To find symmetric difference of 2 dicts'''
+    keysa = set(a)
     keysb = set(b)
     symdif = keysa.symmetric_difference(keysb)
     keys = []
     values = []
     for i in symdif:
         keys.append(i)
-        if i in a and i in b:
+        if i in a and i in b:   # the key is in 2 dict then make the values of 2 dicts as a list
             values.append(list([a[i], b[i]]))
         elif i in a:
             values.append(a[i])

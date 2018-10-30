@@ -64,7 +64,7 @@ print("reverse the list",alp[::-1]) # reverse the list
 
 print("-----------Deep and shallow copy in list--------------")
 lis1 = lis
-print(id(lis),id(lis1)) # creates shallow copy, change in one with affect another
+print(id(lis),id(lis1)) # creates shallow copy, change in one will affect another
 lis2 = lis[:]
 print(id(lis),id(lis2)) # creates deep copy, both are independent , changes in one will not reflect in another
 
