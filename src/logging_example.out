@@ -63,3 +63,6 @@ DEBUG:paramiko.transport.sftp:[chan 0] stat(b'/tmp/myfile.txt')
 INFO:paramiko.transport.sftp:[chan 0] sftp session closed.
 DEBUG:paramiko.transport:[chan 0] EOF sent (0)
 DEBUG:root:End of process
+DEBUG:root:********Fetching files from URL***********
+DEBUG:root:***********Find matched files*************
+DEBUG:root:**********Reading README data***********
