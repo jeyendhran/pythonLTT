@@ -51,10 +51,32 @@ print(ts.tz_convert('GMT'))
 
 stocks = pd.read_csv("NIFTY-I.csv",header=None)
 stocks.columns = ['date','time','open','high','low','close','volumn','OI']
+#
 stocks['period'] = stocks['date'].map(str) + stocks['time']
 stocks.drop(axis=1,columns=['date','time'],inplace=True)
 stocks['period'] = pd.to_datetime(stocks['period'],format='%Y%m%d%H:%M')
 stocks.set_index('period',inplace=True)
-print(stocks.head())
+# print(stocks.head())
 stocks.plot()
+
+bill = pd.read_csv("tips.csv",header=0)
+bill['tip_pct'] = bill['tip']/bill['total_bill']
+grp = bill.groupby(['sex'])
+gsum = grp.sum()['size']
+print(gsum)
+# Plot a graph as bar chart
+#gsum.plot(kind='bar')
+
+grp_pct = grp['tip_pct']
+#Call mean function in another way
+print(grp_pct.agg('mean'))
+# Prints result of mean,standard deviation and user defined function
+print(grp_pct.agg(['mean','std',lambda param:param.min()+param.max()]))
+#Header to the function's results
+print(grp_pct.agg([('Mean','mean'),('Standard deviation','std'),('Myfun',lambda param:param.min()+param.max())]))
+#
+pd.crosstab([bill.day,bill.sex],bill.size).plot(kind='pie',subplots=True)
+
 plt.show()
+
+
