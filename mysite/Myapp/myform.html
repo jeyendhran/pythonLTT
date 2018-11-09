@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search/" method="post">
+        {%csrf_token%}
+        <input type="text" placeholder="publisher name" name="search"/>
+        <input type="submit" value="Search"/>
+    </form>
+    <form action="/logout/" method="get">
+        <input type="submit" value="Logout">
+    </form>
+    <br>
+{%if data %}
+    Publisher Info:<br>
+    {%if data.name%}
+    <form action="/update/" method="get">
+    <h3>
+        <table border="1" cellpadding="10px" cellspacing="1px">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" value="{{data.name}}"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" name="address" value="{{data.address}}"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="city" value="{{data.city}}"></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input type="text" name="state" value="{{data.state_province}}"></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td><input type="text" name="country" value="{{data.country}}"></td>
+            </tr>
+            <tr>
+                <td>Website:</td>
+                <td><a href="{{data.website}}">{{data.website}}</a></td>
+            </tr>
+        </table>
+    </h3>
+    <input type="submit" value="Update">
+    </form>
+    {%else%}
+        No data found
+    {%endif%}
+{%endif%}
+</body>
+</html>

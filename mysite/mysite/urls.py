@@ -24,6 +24,15 @@ urlpatterns = [
     path('date/',date_time),
     re_path(r'addtime/(.*)',addhours),
     path('template/<content>',getTemplate),
+    path("viewsearch/",getForm),
+    re_path(r"search/",searchtext),
+    path("update/",update),
+    path("myform/",getMyform),
+    path("getcookie/",getcookie),
+    path("setcookie/",setcookie),
+    path("login/",login),
+    path('login_validate/',validate_login),
+    path('logout/',logout),
     path('admin/', admin.site.urls),
 ]
 
