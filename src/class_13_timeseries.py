@@ -5,6 +5,7 @@ from dateutil.parser import parse
 from _datetime import datetime
 from datetime import timedelta
 
+
 start = datetime(2011, 1, 7)
 print(str(start))
 print(start.strftime('%Y-%m-%d'))
@@ -78,5 +79,3 @@ print(grp_pct.agg([('Mean','mean'),('Standard deviation','std'),('Myfun',lambda 
 pd.crosstab([bill.day,bill.sex],bill.size).plot(kind='pie',subplots=True)
 
 plt.show()
-
-
