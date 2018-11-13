@@ -92,7 +92,7 @@ df = pd.DataFrame([['green','M',10.1,'class1'],['red','L',13.5,'class2'],['blue'
 df1 = pd.DataFrame([['green','M',10.1,'class1'],['red','L',13.5,'class2'],['blue','XL',15.6,'class3']],columns=['color','size','price','brand'])
 print(df)
 size_map = {'XL':3,'L':2,'M':1}
-df['size']=df['size'].map(size_map)
+df['size']=df['size'].map(size_map) # to map values with integer values
 print(df)
 class_map = {l:idx for idx,l in enumerate(np.unique(df['brand']))}
 df['brand']=df['brand'].map(class_map)
@@ -105,15 +105,19 @@ class_le = LabelEncoder()
 X[:,0] = class_le.fit_transform(X[:,0])
 print(X)
 
-ohe = OneHotEncoder(categorical_features=[1])
+# To change column data to row data
+ohe = OneHotEncoder(categorical_features=[1]) 
 print(ohe.fit_transform(X).toarray())
 
+# Manually standardize and normalize the data
 df = pd.DataFrame([0,1,2,3,4,5])
 df[1] = (df[0]-df[0].mean())/df[0].std(ddof=0) # to get standarsized data
 df[2] = (df[0]-df[0].min())/(df[0].max()-df[0].min()) # to get normalized data
 df.columns = ['input','standardized','normalized']
 print(df)
 
+
+# To standardize the training and test data to get exact result in all passes
 iris = pd.read_csv("wine.csv")
 X = iris.iloc[:,1:].values
 Y = iris.iloc[:,0].values
@@ -121,8 +125,8 @@ Y = iris.iloc[:,0].values
 # Y = iris.target[50:150] # returns the output 0 or 1 or 2
 X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3)
 sc = StandardScaler()
-X_train_std = sc.fit_transform(X_train)
-X_test_std = sc.fit_transform(X_test)
+X_train_std = sc.fit_transform(X_train) # to standardize the training data
+X_test_std = sc.fit_transform(X_test)   # to standardize the testing data
 ppn = Perceptron(max_iter=50, eta0=0.1) #eta0 is learning rate
 ppn.fit(X_train_std,Y_train)
 Y_pred = ppn.predict(X_test_std)
