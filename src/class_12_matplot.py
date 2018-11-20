@@ -8,20 +8,20 @@ Y1 = np.sin(X)
 #Y1 = np.sqrt(1 - X*X)
 Y2 = np.cos(X)
 
-# plt.plot(X,Y1,color='red',linewidth=1,linestyle =':',label='Y1 plot')
-# plt.plot(X,Y2,color='maroon',linewidth=2,linestyle="-.",label="Y2 plot")
-# #plt.xticks([-np.pi,-np.pi/2,0,np.pi/2,np.pi])
-# plt.xticks([-np.pi,-np.pi/2,0,np.pi/2,np.pi],
-#            [r'$-\pi$',r'$-\pi/2$',r'$0$',r'$\pi/2$',r'$\pi$'],
-#            rotation =30) # to show pi symbol instead of 3.14
-#
-# plt.yticks(range(-5,5))
+plt.plot(X,Y1,color='red',linewidth=1,linestyle =':',label='Y1 plot')
+plt.plot(X,Y2,color='maroon',linewidth=2,linestyle="-.",label="Y2 plot")
+#plt.xticks([-np.pi,-np.pi/2,0,np.pi/2,np.pi])
+plt.xticks([-np.pi,-np.pi/2,0,np.pi/2,np.pi],
+           [r'$-\pi$',r'$-\pi/2$',r'$0$',r'$\pi/2$',r'$\pi$'],
+           rotation =30) # to show pi symbol instead of 3.14
+
+plt.yticks(range(-5,5))
 
 #enhancement of the figure,spines color,position, ticks values
-plt.figure(figsize=(4,4),dpi=100)
-plt.xlim(X.min()*1.5)
-plt.ylim(Y1.min()*0.5)
-
+# plt.figure(figsize=(4,4),dpi=100)
+# plt.xlim(X.min()*1.5)
+# plt.ylim(Y1.min()*0.5)
+#
 ax = plt.gca()
 ax.spines['right'].set_color(None)
 ax.spines['top'].set_color(None)
@@ -29,13 +29,13 @@ ax.xaxis.set_ticks_position('top')
 ax.spines['bottom'].set_position(('data',0))
 ax.yaxis.set_ticks_position('right')
 ax.spines['left'].set_position(('data',0))
-
-for label in ax.get_xticklabels()+ax.get_yticklabels():
-    label.set_fontsize(16)
-    label.set_bbox(dict(facecolor = 'red',edgecolor=None,alpha=0.1))
-
-#plt.xticks(range(0,5))
-plt.legend(loc='center')
+#
+# for label in ax.get_xticklabels()+ax.get_yticklabels():
+#     label.set_fontsize(16)
+#     label.set_bbox(dict(facecolor = 'red',edgecolor=None,alpha=0.1))
+#
+# #plt.xticks(range(0,5))
+# plt.legend(loc='center')
 
 # not working
 #t = 2 * np.pi / 3

@@ -46,6 +46,7 @@ objects = [comp]
 objects.append(Adapter(mysyn,dict(execute=mysyn.play)))
 objects.append(Adapter(me,dict(execute=me.speak)))
 for i in objects:
+    print(i.__dict__)
     print(i,i.execute())
 
 class Projector:
@@ -69,13 +70,13 @@ class MacInTosh:
 proj = Projector("Myprojector")
 intel = Intel("MyIntel")
 mac = MacInTosh("MyMac")
-
-inteladapter = Adapter(intel,dict(hdmiconnector = intel.vgiconnector))
-macadapter = Adapter(mac,dict(hdmiconnector = mac.usbconnector))
+projadapter = Adapter(intel,dict(connector = proj.hdmiconnector))
+inteladapter = Adapter(intel,dict(connector = intel.vgiconnector))
+macadapter = Adapter(mac,dict(connector = mac.usbconnector))
 print()
-print(proj.hdmiconnector())
-print(macadapter.hdmiconnector())
-print(inteladapter.hdmiconnector())
+print(projadapter.connector())
+print(macadapter.connector())
+print(inteladapter.connector())
 print(inteladapter)
 
 

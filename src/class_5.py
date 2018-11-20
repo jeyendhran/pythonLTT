@@ -114,38 +114,51 @@ class Singleton(object):
         print("cls",cls)
         print("args", args)
         print("kargs", kwargs)
-        if not hasattr(cls,'instance'):     # To create singleton object
-            cls.instance = super(Singleton,cls).__new__(cls)
-        return cls.instance
+        if not hasattr(cls,'obj'):     # To create singleton object
+            cls.obj = super(Singleton,cls).__new__(cls)
+        return cls.obj
 
-    def __init__(self):
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
         print("Init called")
 
 import copy
-n = Singleton()
-n1 = Singleton()
-print("Second obj",n1.instance)
+n = Singleton(10,20)
+n1 = Singleton(15,30)
+print("Instance",n)
+print("Instance n1",n1)
+print(n.a,n.b)
+print(n1.a,n1.b)
+
 n2 = copy.deepcopy(n1)  # then also it will not create new object same obj is referenced
+
+def mymethod(self,a):
+   print(a)
 
 
 class Monostate:
-    __share_stat = {"2":"3"}
+    myvar = {"2":"3"}
     def __init__(self):
         self.a = 1
-        self.__dict__ = self.__share_stat
+        #self.__dict__ = self.myvar
 
 m = Monostate()
 m1 = Monostate()
-m.a = 10
-print(m,m1)
 print(m.__dict__,m1.__dict__)
-print(m.a,m1.a)
+m.b = 10
+m1.c = 20
+m1.amethod=mymethod
+print(m,'\n',m1)
+print(m.__dict__,m1.__dict__)
+#print(m.b,m1.b)
+print(m.myvar,m1.myvar)
 
 class MyMetaClass(type):
     def __call__(self, *args, **kwargs):
         return type.__call__(self,*args,*kwargs)
 
-class str(metaclass=MyMetaClass):
+class str():
     def __init__(self,a,b):
         self.firstname = a
         self.lastname = b
@@ -175,4 +188,3 @@ def decoratorfunc(func):
 
 #f = decoratorfunc(mynormalfunc)
 #f()
-

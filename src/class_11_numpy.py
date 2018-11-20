@@ -29,7 +29,7 @@ print(linearspacearr)
 # dia = np.diag([1,2,3,4]) #diagonal matrix
 # print("Diagonal matrix",dia)
 #
-# print(np.zeros(5),np.ones([3,4],dtype=int),np.zeros(5,dtype=np.int64))
+print(np.zeros(5),np.ones([3,4],dtype=int),np.zeros(5,dtype=np.int64))
 #
 # print(arr1*2)
 

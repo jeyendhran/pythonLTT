@@ -1,6 +1,6 @@
 ::
     >>> from class_9_testing import myadd,mysub
-    >>> myadd(2,3)
-    5
+    >>> myadd(10,3)
+    13
     >>> mysub(5,4)
     1

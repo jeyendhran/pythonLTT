@@ -9,14 +9,15 @@ from sklearn.tree import DecisionTreeClassifier
 
 # To work with iris data set
 # iris = load_iris()
+# print(iris)
 # X = iris.data[50:150] # returns the input data second index is for features index
 # Y = iris.target[50:150] # returns the output 0 or 1 or 2
 # print(X,Y)
-#print(np.count_nonzero(Y)) # to get count of non-zeros
+# print(np.count_nonzero(Y)) # to get count of non-zeros
 # X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3)
 # print(X_train.size,X_train.shape)
 # print(X_test.size)
-# ppn = Perceptron(max_iter=20, eta0=0.1) #eta0 is learning rate
+# ppn = Perceptron(max_iter=20, eta0=0.1,random_state=0) #eta0 is learning rate
 # print(ppn)
 # ppn.fit(X_train,Y_train)
 # print(ppn)
@@ -62,20 +63,20 @@ from sklearn.tree import DecisionTreeClassifier
 # print("Misclassfied in training",(Y_train - Y_train_pred).sum())
 
 # Decision tree
-# iris = load_iris()
-# X = iris.data[50:150] # returns the input data second index is for features index
-# Y = iris.target[50:150] # returns the output 0 or 1 or 2
-# print(X,Y)
-# X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3)
-# print(X_train.size,X_train.shape)
-# print(X_test.size)
-# ppn = DecisionTreeClassifier(max_depth=4)
-# ppn.fit(X_train,Y_train)
-# print(ppn)
-# #Y_train_pred = ppn.predict(X_train)
-# Y_pred = ppn.predict(X_test)
-# print("Misclassfied in testing",(Y_test - Y_pred).sum()) # returns the deviation of generated algm's o.p with original o.p
-# #print("Misclassfied in training",(Y_train - Y_train_pred).sum())
+iris = load_iris()
+X = iris.data[50:150] # returns the input data second index is for features index
+Y = iris.target[50:150] # returns the output 0 or 1 or 2
+print(X,Y)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3)
+print(X_train.size,X_train.shape)
+print(X_test.size)
+ppn = DecisionTreeClassifier(max_depth=4)
+ppn.fit(X_train,Y_train)
+print(ppn)
+#Y_train_pred = ppn.predict(X_train)
+Y_pred = ppn.predict(X_test)
+print("Misclassfied in testing",(Y_test - Y_pred).sum()) # returns the deviation of generated algm's o.p with original o.p
+#print("Misclassfied in training",(Y_train - Y_train_pred).sum())
 
 df = pd.DataFrame([[1,np.nan,3,np.nan,5,6],[3,4,5,np.nan,7,8],[np.nan,np.nan,np.nan,6,7,8]])
 

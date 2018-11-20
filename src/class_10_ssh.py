@@ -2,19 +2,19 @@ import paramiko
 import sys
 
 # Program to connect through SSH to a remote server
-# import os
-# def printTotal(trans,tobetransfer):
-#     print("Transfereed data ", trans,tobetransfer)
-#
-# ssh = paramiko.SSHClient()
-# ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-# ssh.connect(hostname='localhost',username='cisco',password='cisco',port='22')
-# sftp = ssh.open_sftp()
-# localpath = 'class_9_pdb.py'
-# remotepath = '/tmp/myname.py'
-# sftp.put(localpath,remotepath,callback=printTotal)
-# sftp.close()
-# ssh.close()
+import os
+def printTotal(trans,tobetransfer):
+    print("Transfereed data ", trans,tobetransfer)
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect(hostname='localhost',username='cisco',password='cisco',port='22')
+sftp = ssh.open_sftp()
+localpath = 'class_9_pdb.py'
+remotepath = '/tmp/myname.py'
+sftp.put(localpath,remotepath,callback=printTotal)
+sftp.close()
+ssh.close()
 
 # Program to send large data with progress bar
 # from tqdm import tqdm # module of progress bar
