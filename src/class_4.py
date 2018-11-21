@@ -187,7 +187,6 @@ print(next(data))
 print(next(data))
 
 line = (l for l in open("recipeData.csv"))
-
 l = (i.split(",") for i in line)
 beercnts = {}
 header = next(l) # store the header which is in first line of the file

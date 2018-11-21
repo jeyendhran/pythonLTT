@@ -5,3 +5,8 @@ def getNewName(name):
     return  "".join(name)
 
 print(getNewName("Jeyendhran"))
+
+a = [0,1]
+[a.append(a[i]+a[i+1]) for i in range(10-len(a))]
+print(a)
+

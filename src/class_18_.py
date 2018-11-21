@@ -34,6 +34,3 @@ lr.fit(X_train_pca,Y_train)
 print("Test accuracy",lr.score(X_test_pca,Y_test))
 print("Training accuracy",lr.score(X_train_pca,Y_train))
 
-l = [1,2]
-print(l.append(l[-1]+l[-2]))
-print(l)
